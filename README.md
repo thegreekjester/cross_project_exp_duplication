@@ -19,7 +19,7 @@ Cross_project_exp_duplication is a js script for dealing with cross project expe
 node App.js --experiment_id=234234235 --project_id=34235235 --token=235q2246246346
 ```
 
-The experiment_id is the experiment you wish to duplicate and the project_id is the project you wish to duplicated it to.
+The experiment_id is the experiment you wish to duplicate and the project_id is the project you wish to duplicate it to.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
