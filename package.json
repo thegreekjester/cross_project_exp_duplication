@@ -1,0 +1,24 @@
+{
+  "name": "experiment_transfer",
+  "version": "1.0.0",
+  "description": "Cross_project_exp_duplication is a js script for dealing with cross project experiment duplication on Optimizely X Web.",
+  "main": "App.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "yargs": "^12.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thegreekjester/cross_project_exp_duplication.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thegreekjester/cross_project_exp_duplication/issues"
+  },
+  "homepage": "https://github.com/thegreekjester/cross_project_exp_duplication#readme"
+}
