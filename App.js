@@ -1,5 +1,5 @@
 var axios = require('axios');
-var argv = require('argv');
+var argv = require('yargs').argv;
 var page_ids = []
 var data;
 
