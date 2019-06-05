@@ -82,6 +82,8 @@ axios.get(`https://api.optimizely.com/v2/experiments/${argv.experiment_id}`, con
             expJSON.page_ids = page_ids
           }else{
             expJSON.url_targeting = data.url_targeting
+            delete expJSON.url_targeting.page_id
+            delete expJSON.url_targeting.key
           }
           // LMAO this is like zip(dict()) from python --> JS
           exp_page_ids.forEach(function(p,i){
