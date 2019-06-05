@@ -16,10 +16,8 @@ Cross_project_exp_duplication is a js script for dealing with cross project expe
 ## Usage
 
 ```javascipt
-node App.js --experiment_id=234234235 --project_id=34235235 --token=235q2246246346 --page_ids=[] --exp_name=some_name
+node App.js --experiment_id=234234235 --project_id=34235235 --token=235q2246246346  --exp_name=some_name
 ```
---page id's is optional paramater that specifies pages to use on the new project instead of creating them
-
 --exp_name is optional and specifies a name for the duplicated experiment, defaults to "Transferred Experiment"
 
 --experiment_id is the experiment you wish to duplicate (required)
