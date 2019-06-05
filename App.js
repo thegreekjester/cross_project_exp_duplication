@@ -1,5 +1,8 @@
 const axios = require('axios');
 const argv = require('yargs').argv;
+
+/********************************** Necessary arrays/objects for this duplication ********************************************/
+
 var page_ids = [] // array of page ids that are generated in new project to be used for new duplicated experiment
 var data;
 var variation_pages = [] // this array holds objects that have the variation ID, action_id (for multiple changes), as well as the page_id used
@@ -9,6 +12,7 @@ var page_mapping = {} // the finals mappings of old --> new page ids
 var aud_mapping = {} // the final mapping of old --> new aud ids
 var old_experiment_audiences = [] // audience ids of the old experiment
 var aud_ids = [] // array of audience ids for new experiment
+var expJSON = {} // experiment object used for final experiment post request
 
 //Header config for the axios post requests
 var config_post = {
@@ -24,7 +28,8 @@ var config_get = {
   }
 }
 
-var expJSON = {}
+
+/*************************************** Beginning of the long arguous process known as "duplication" ********************************/
 
 axios.get(`https://api.optimizely.com/v2/experiments/${argv.experiment_id}`, config_get) // grab experiment config of the one you wanna duplicate
   .then(function (res) {
@@ -68,7 +73,8 @@ axios.get(`https://api.optimizely.com/v2/experiments/${argv.experiment_id}`, con
       })
 
 
-      // ******* running through all the page get requests ***************
+      /************************************* Running through all the asset get requests *********************************/
+
       Promise.all(get_promises).then(function (configs) {
         console.log('in second promise')
         configs.forEach(function (config) {
@@ -88,7 +94,8 @@ axios.get(`https://api.optimizely.com/v2/experiments/${argv.experiment_id}`, con
         })
 
 
-        // ********************* running through all the page post requests ******************
+        /******************************** Running through all the page post requests **************************************/
+
         Promise.all(post_promises).then(function(values){
           values.forEach(function(value){
             if(value.data.activation_type){
@@ -131,7 +138,7 @@ axios.get(`https://api.optimizely.com/v2/experiments/${argv.experiment_id}`, con
 
           })
 
-          // ********************* FINAL exp creation **************************
+          /************************************* FINAL exp creation ***********************************************/
           axios.post('https://api.optimizely.com/v2/experiments', JSON.stringify(expJSON), config_post)
           .then((res) => {
            console.log("SUCCESS FOR MAKING THE EXPERIMENT!", res.data.variations[1].actions)
